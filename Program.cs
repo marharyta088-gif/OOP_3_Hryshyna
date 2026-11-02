@@ -1,31 +1,47 @@
-﻿namespace WordRemover
+﻿namespace AreaCalculator
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.WriteLine("Площу якої фігури ви хочете отримати?");
+            Console.WriteLine("(Квадрат, Круг, Прямокутник, Трикутник)");
+            string choice = Console.ReadLine();
 
-            Console.WriteLine("Введіть речення:");
-            string text = Console.ReadLine();
-
-            Console.WriteLine("Введіть кількість слів для видалення (X):");
-            int x = int.Parse(Console.ReadLine());
-
-            string[] words = text.Split(' ');
-            string resultText = "";
-
-            for (int i = x; i < words.Length; i++)
+            if (choice.ToLower() == "квадрат")
             {
-                resultText += words[i];
-
-                if (i < words.Length - 1)
-                {
-                    resultText += " ";
-                }
+                Console.Write("Введіть розмір сторони: ");
+                float side = float.Parse(Console.ReadLine());
+                Console.WriteLine("Площа = " + (side * side));
             }
-
-            Console.WriteLine("Результат: " + resultText);
+            else if (choice.ToLower() == "круг")
+            {
+                Console.Write("Введіть розмір радіуса: ");
+                float r = float.Parse(Console.ReadLine());
+                float pi = 3.14159f;
+                Console.WriteLine("Площа = " + (pi * r * r));
+            }
+            else if (choice.ToLower() == "прямокутник")
+            {
+                Console.Write("Введіть розмір першої сторони: ");
+                float a = float.Parse(Console.ReadLine());
+                Console.Write("Введіть розмір другої сторони: ");
+                float b = float.Parse(Console.ReadLine());
+                Console.WriteLine("Площа = " + (a * b));
+            }
+            else if (choice.ToLower() == "трикутник")
+            {
+                Console.Write("Введіть розмір основи: ");
+                float baseTri = float.Parse(Console.ReadLine());
+                Console.Write("Введіть розмір висоти: ");
+                float height = float.Parse(Console.ReadLine());
+                Console.WriteLine("Площа = " + ((baseTri * height) / 2));
+            }
+            else
+            {
+                Console.WriteLine("Такої фігури немає в списку.");
+            }
         }
     }
 }

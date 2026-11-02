@@ -1,37 +1,31 @@
-﻿namespace ReverseNumber
+﻿namespace WordRemover
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Console.Write("Введіть ціле число: ");
-            string input = Console.ReadLine();
 
-            bool isNegative = false;
-            string numStr = input;
+            Console.WriteLine("Введіть речення:");
+            string text = Console.ReadLine();
 
-            if (input[0] == '-')
+            Console.WriteLine("Введіть кількість слів для видалення (X):");
+            int x = int.Parse(Console.ReadLine());
+
+            string[] words = text.Split(' ');
+            string resultText = "";
+
+            for (int i = x; i < words.Length; i++)
             {
-                isNegative = true;
-                numStr = input.Substring(1, input.Length - 1);
+                resultText += words[i];
+
+                if (i < words.Length - 1)
+                {
+                    resultText += " ";
+                }
             }
 
-            string reversedStr = "";
-            
-            for (int i = numStr.Length - 1; i >= 0; i--)
-            {
-                reversedStr += numStr[i];
-            }
-
-            long result = long.Parse(reversedStr);
-
-            if (isNegative)
-            {
-                result = -result;
-            }
-
-            Console.WriteLine("Результат: " + result);
+            Console.WriteLine("Результат: " + resultText);
         }
     }
 }
